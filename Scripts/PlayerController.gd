@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var turn_speed = 1.0
 var jumping = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var quick_turning = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,12 +22,9 @@ func _physics_process(delta):
 		
 	var input_vertical = Input.get_axis("Forward", "Backward")
 	var input_horizontal = Input.get_axis("Right", "Left")
-
 	
-	translate(Vector3(0, 0, speed * input_vertical))
-	rotate_y(turn_speed * input_horizontal)
+	translate(Vector3(0, 0, speed * input_vertical) * delta)
+	rotate_y(turn_speed * input_horizontal * delta)
+	velocity.y -= gravity * delta
 	
-	#velocity.z = input_vertical * speed
-	#velocity.y -= gravity * delta
-	#rotation.y += input_horizontal * turn_speed
-	#move_and_slide()
+	move_and_slide()
