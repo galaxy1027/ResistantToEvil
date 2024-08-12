@@ -21,12 +21,10 @@ func _physics_process(delta):
 		
 	var input_vertical = Input.get_axis("Forward", "Backward")
 	var input_horizontal = Input.get_axis("Right", "Left")
-	
-	var movement = Vector3(0, 0, input_vertical)
 
 	
-	transform = transform.translated(movement * speed)
-	transform = transform.rotated(Vector3(0, 1, 0), turn_speed * input_horizontal)
+	translate(Vector3(0, 0, speed * input_vertical))
+	rotate_y(turn_speed * input_horizontal)
 	
 	#velocity.z = input_vertical * speed
 	#velocity.y -= gravity * delta

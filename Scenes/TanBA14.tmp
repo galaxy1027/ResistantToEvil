@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds4dw10nbv1my"]
+[gd_scene load_steps=7 format=3 uid="uid://ds4dw10nbv1my"]
 
 [ext_resource type="PackedScene" uid="uid://b2faorls1gjha" path="res://Characters/Player.tscn" id="1_anj5d"]
-[ext_resource type="Texture2D" uid="uid://cypkfmpdwu5v1" path="res://Textures/Tile_01-256x256.png" id="2_w2gw7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_on28b"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,10 +14,6 @@ background_mode = 2
 sky = SubResource("Sky_kreb6")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8opj"]
-albedo_texture = ExtResource("2_w2gw7")
-uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k8ucq"]
 size = Vector2(10, 10)
@@ -37,7 +32,7 @@ shadow_enabled = true
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_anj5d")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.0344393, 0.452975, 0)
-speed = 0.1
+speed = 0.01
 jump_velocity = 4.0
 turn_speed = 0.1
 
@@ -45,7 +40,6 @@ turn_speed = 0.1
 transform = Transform3D(3.33333, 0, 0, 0, 2.88675, 1.66667, 0, -1.66667, 2.88675, 0, 1.73037, 2.64855)
 
 [node name="Ground" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_t8opj")
 mesh = SubResource("PlaneMesh_k8ucq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
